@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartela — Modern Fashion &amp; Lifestyle</title>
+  <meta name="description" content="Cartela — Discover curated fashion collections where style, quality, and craftsmanship come together. Shop fall collections, new arrivals, and exclusive deals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cartela</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="#collections">Collections</a>
+        <a href="#brandBanner">About</a>
+        <a href="#">Blog</a>
+      </nav>
+      <div class="nav-actions">
+        <button aria-label="Search" id="searchBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="cart-icon" aria-label="Cart" id="cartBtn" onclick="toggleCart()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== CART SIDEBAR ====== -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="toggleCart()" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <p>Your cart is empty</p>
+        <span>Add items to get started</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="cart-shipping-note">Shipping calculated at checkout</div>
+      <a href="checkout.html" class="cart-checkout-btn" id="checkoutBtn">Proceed to Checkout</a>
+      <button class="cart-continue" onclick="toggleCart()">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="hero">
+    <img src="images/hero.png" alt="Fall Collection - Couple in wheat field" class="hero-image" />
+    <div class="hero-overlay">
+      <h1 class="hero-title">Fall Collection</h1>
+      <p class="hero-subtitle">Autumn / Winter 2025</p>
+      <a href="shop.html" class="hero-btn" id="heroShopBtn">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- ====== NEW ARRIVALS ====== -->
+  <section class="section" id="newArrivals">
+    <div class="container animate-on-scroll">
+      <div class="section-header">
+        <h2 class="section-title">New Arrivals</h2>
+        <a href="#" class="section-link">View All →</a>
+      </div>
+      <div class="products-grid">
+        <div class="product-card" id="product1">
+          <div class="product-image-wrap">
+            <img src="images/product-coat.png" alt="Camel Wool Overcoat" />
+            <div class="product-quick-view">Quick View</div>
+          </div>
+          <div class="product-info">
+            <p class="product-name">Camel Wool Overcoat</p>
+            <p class="product-price">$285.00</p>
+          </div>
+        </div>
+        <div class="product-card" id="product2">
+          <div class="product-image-wrap">
+            <img src="images/product-gloves.png" alt="Signature Leather Gloves" />
+            <div class="product-quick-view">Quick View</div>
+          </div>
+          <div class="product-info">
+            <p class="product-name">Signature Leather Gloves</p>
+            <p class="product-price">$95.00</p>
+          </div>
+        </div>
+        <div class="product-card" id="product3">
+          <div class="product-image-wrap">
+            <img src="images/product-turtleneck.png" alt="Merino Turtleneck" />
+            <div class="product-quick-view">Quick View</div>
+          </div>
+          <div class="product-info">
+            <p class="product-name">Merino Turtleneck</p>
+            <p class="product-price">$145.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURES ====== -->
+  <section class="features" id="features">
+    <div class="container animate-on-scroll">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="feature-title">Driven by quality</h3>
+          <p class="feature-text">Every piece is crafted with premium materials and meticulous attention to detail, ensuring lasting elegance.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3 class="feature-title">Exclusive express</h3>
+          <p class="feature-text">Enjoy complimentary express shipping on all orders, delivering your selections right to your doorstep.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="feature-title">Customer first</h3>
+          <p class="feature-text">Our dedicated team is here to make your experience seamless with personalized styling advice and support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== COLLECTIONS ====== -->
+  <section class="section" id="collections">
+    <div class="container animate-on-scroll">
+      <div class="section-header">
+        <h2 class="section-title">Collections</h2>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card" id="collFall">
+          <img src="images/collection-dress.png" alt="Fall Collection" />
+          <div class="collection-overlay">
+            <span class="collection-name">Fall Collection</span>
+          </div>
+        </div>
+        <div class="collection-card" id="collKnitwear">
+          <img src="images/collection-knitwear.png" alt="New Knitwear" />
+          <div class="collection-overlay">
+            <span class="collection-name">New Knitwear</span>
+          </div>
+        </div>
+        <div class="collection-card" id="collChair">
+          <img src="images/collection-chair.png" alt="Chair Picks" />
+          <div class="collection-overlay">
+            <span class="collection-name">Chair Picks</span>
+          </div>
+        </div>
+        <div class="collection-card" id="collSandals">
+          <img src="images/collection-sandals.png" alt="Studio Edit" />
+          <div class="collection-overlay">
+            <span class="collection-name">Studio Edit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BRAND STORY BANNER ====== -->
+  <section class="brand-banner animate-on-scroll" id="brandBanner">
+    <img src="images/brand-story.png" alt="Craftsmanship and quality" />
+    <div class="brand-banner-overlay">
+      <span class="brand-banner-label">Our Philosophy</span>
+      <p class="brand-banner-text">Discover a brand where style, quality, and craftsmanship come together.</p>
+    </div>
+  </section>
+
+  <!-- ====== FINAL SALE ====== -->
+  <section class="section sale-section" id="finalSale">
+    <div class="container animate-on-scroll">
+      <div class="section-label">Limited Time</div>
+      <div class="section-header">
+        <h2 class="section-title">Final Sale</h2>
+        <a href="#" class="section-link">Shop Sale →</a>
+      </div>
+      <div class="sale-grid">
+        <div class="sale-card" id="sale1">
+          <div class="sale-image-wrap">
+            <img src="images/sale-outfit.png" alt="Silk Lounge Set" />
+            <span class="sale-badge">-40%</span>
+          </div>
+          <div class="sale-info">
+            <p class="sale-name">Silk Lounge Set</p>
+            <p class="sale-price">
+              <span class="original">$220.00</span>
+              <span class="current">$132.00</span>
+            </p>
+          </div>
+        </div>
+        <div class="sale-card" id="sale2">
+          <div class="sale-image-wrap">
+            <img src="images/sale-casual.png" alt="Oversized Joggers" />
+            <span class="sale-badge">-35%</span>
+          </div>
+          <div class="sale-info">
+            <p class="sale-name">Oversized Comfort Joggers</p>
+            <p class="sale-price">
+              <span class="original">$120.00</span>
+              <span class="current">$78.00</span>
+            </p>
+          </div>
+        </div>
+        <div class="sale-card" id="sale3">
+          <div class="sale-image-wrap">
+            <img src="images/sale-bag.png" alt="Canvas Tote" />
+            <span class="sale-badge">-30%</span>
+          </div>
+          <div class="sale-info">
+            <p class="sale-name">Artisan Canvas Tote</p>
+            <p class="sale-price">
+              <span class="original">$165.00</span>
+              <span class="current">$115.50</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== NEWSLETTER ====== -->
+  <section class="newsletter animate-on-scroll" id="newsletter">
+    <img src="images/newsletter-bg.png" alt="Stay connected" class="newsletter-bg" />
+    <div class="newsletter-overlay">
+      <h2 class="newsletter-title">Stay ahead with exclusive deals</h2>
+      <p class="newsletter-text">Subscribe to our newsletter for early access to new arrivals, styling tips, and members-only offers.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" class="newsletter-input" placeholder="Enter your email" id="newsletterEmail" required />
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">Cartela</a>
+          <p>A curated fashion destination where style meets substance. Thoughtfully designed, responsibly crafted.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-newsletter">
+        <p class="footer-newsletter-label">Join our newsletter</p>
+        <form class="footer-newsletter-form" id="footerNewsletterForm">
+          <input type="email" placeholder="Enter your email" id="footerEmail" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cartela. All rights reserved. | Developed By DevelopSuite</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Pinterest">Pinterest</a>
+        </div>
+        <div class="footer-payments">
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>Amex</span>
+          <span>PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

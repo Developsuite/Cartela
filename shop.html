@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Cartela</title>
+  <meta name="description" content="Browse our curated collection of fashion essentials. Shop coats, knitwear, accessories, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header class="header scrolled" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cartela</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="index.html#collections">Collections</a>
+        <a href="index.html#brandBanner">About</a>
+        <a href="#">Blog</a>
+      </nav>
+      <div class="nav-actions">
+        <button aria-label="Search" id="searchBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="cart-icon" aria-label="Cart" id="cartBtn" onclick="toggleCart()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== CART SIDEBAR ====== -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="toggleCart()" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <p>Your cart is empty</p>
+        <span>Add items to get started</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="cart-shipping-note">Shipping calculated at checkout</div>
+      <a href="checkout.html" class="cart-checkout-btn" id="checkoutBtn">Proceed to Checkout</a>
+      <button class="cart-continue" onclick="toggleCart()">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- ====== SHOP PAGE ====== -->
+  <main class="shop-page" style="margin-top: 70px;">
+    <div class="container">
+      <div class="shop-hero">
+        <h1 class="shop-title">Explore Our Shop</h1>
+        <p class="shop-subtitle">Browse our carefully curated collection, crafted for you.</p>
+      </div>
+
+      <div class="shop-layout">
+        <!-- Sidebar Filters -->
+        <aside class="shop-sidebar" id="shopSidebar">
+          <div class="filter-group">
+            <label class="filter-label">Search Products</label>
+            <div class="filter-search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="Search..." id="shopSearch" />
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Categories</label>
+            <div class="filter-options">
+              <label class="filter-checkbox"><input type="checkbox" value="all" checked onchange="filterProducts()" /> <span>All Products</span></label>
+              <label class="filter-checkbox"><input type="checkbox" value="fall-collection" onchange="filterProducts()" /> <span>Fall Collection</span></label>
+              <label class="filter-checkbox"><input type="checkbox" value="the-essentials" onchange="filterProducts()" /> <span>The Essentials</span></label>
+              <label class="filter-checkbox"><input type="checkbox" value="accessories" onchange="filterProducts()" /> <span>Accessories</span></label>
+              <label class="filter-checkbox"><input type="checkbox" value="knitwear" onchange="filterProducts()" /> <span>Knitwear</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Price</label>
+            <div class="filter-options">
+              <label class="filter-radio"><input type="radio" name="sort" value="default" checked onchange="sortProducts(this.value)" /> <span>Default</span></label>
+              <label class="filter-radio"><input type="radio" name="sort" value="low-high" onchange="sortProducts(this.value)" /> <span>Low to High</span></label>
+              <label class="filter-radio"><input type="radio" name="sort" value="high-low" onchange="sortProducts(this.value)" /> <span>High to Low</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Availability</label>
+            <div class="filter-options">
+              <label class="filter-checkbox"><input type="checkbox" value="new" onchange="filterProducts()" /> <span>New Arrivals</span></label>
+              <label class="filter-checkbox"><input type="checkbox" value="sale" onchange="filterProducts()" /> <span>On Sale</span></label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <div class="shop-grid" id="shopGrid">
+          <!-- Products injected by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Cartela</a>
+          <p>A curated fashion destination where style meets substance. Thoughtfully designed, responsibly crafted.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">New Arrivals</a></li>
+            <li><a href="shop.html">Best Sellers</a></li>
+            <li><a href="shop.html">Collections</a></li>
+            <li><a href="shop.html">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cartela. All rights reserved. | Developed By DevelopSuite</p>
+        <div class="footer-social">
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+          <a href="#">Pinterest</a>
+        </div>
+        <div class="footer-payments">
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>Amex</span>
+          <span>PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>
