@@ -127,10 +127,14 @@ function formatExpiry(input) {
 
 // ===== PAYMENT METHOD SELECT =====
 document.querySelectorAll('.payment-method input').forEach(radio => {
-  radio.addEventListener('change', () => {
+  radio.addEventListener('change', (e) => {
     document.querySelectorAll('.payment-method').forEach(m => {
       m.classList.toggle('selected', m.querySelector('input').checked);
     });
+    const cardForm = document.getElementById('cardDetailsForm');
+    if (cardForm) {
+      cardForm.style.display = e.target.value === 'card' ? 'block' : 'none';
+    }
   });
 });
 
@@ -161,19 +165,22 @@ function applyPromo() {
 
 // ===== PLACE ORDER =====
 function placeOrder() {
+  const payMethod = document.querySelector('input[name="payMethod"]:checked')?.value || 'card';
   const cardName = document.getElementById('cardName');
   const cardNumber = document.getElementById('cardNumber');
   const cardExpiry = document.getElementById('cardExpiry');
   const cardCvc = document.getElementById('cardCvc');
 
-  if (!cardName.value || !cardNumber.value || !cardExpiry.value || !cardCvc.value) {
-    [cardName, cardNumber, cardExpiry, cardCvc].forEach(f => {
-      if (!f.value) {
-        f.classList.add('input-error');
-        f.addEventListener('input', () => f.classList.remove('input-error'), { once: true });
-      }
-    });
-    return;
+  if (payMethod === 'card') {
+    if (!cardName.value || !cardNumber.value || !cardExpiry.value || !cardCvc.value) {
+      [cardName, cardNumber, cardExpiry, cardCvc].forEach(f => {
+        if (!f.value) {
+          f.classList.add('input-error');
+          f.addEventListener('input', () => f.classList.remove('input-error'), { once: true });
+        }
+      });
+      return;
+    }
   }
 
   // Show loading spinner
@@ -185,11 +192,12 @@ function placeOrder() {
     items: getCart(),
     email: document.getElementById('email')?.value || '',
     shipping: document.querySelector('input[name="shipping"]:checked')?.value || 'standard',
+    paymentMethod: payMethod,
     total: parseFloat(document.getElementById('summaryTotal')?.textContent.replace('$', '') || 0),
     address: `${document.getElementById('firstName')?.value || ''} ${document.getElementById('lastName')?.value || ''}<br>
               ${document.getElementById('address')?.value || ''}<br>
               ${document.getElementById('city')?.value || ''}, ${document.getElementById('state')?.value || ''} ${document.getElementById('zip')?.value || ''}`,
-    cardLast4: cardNumber.value.replace(/\s/g, '').slice(-4),
+    cardLast4: payMethod === 'card' ? cardNumber.value.replace(/\s/g, '').slice(-4) : null,
   };
   localStorage.setItem('cartela_order', JSON.stringify(order));
 

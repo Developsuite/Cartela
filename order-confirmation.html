@@ -194,7 +194,13 @@
       document.getElementById('confirmShippingMethod').textContent = methodNames[shippingMethod] || 'Standard Shipping';
 
       // Payment
-      if (order.cardLast4) {
+      if (order.paymentMethod === 'cod') {
+        document.getElementById('confirmPayment').textContent = 'Cash on Delivery';
+      } else if (order.paymentMethod === 'paypal') {
+        document.getElementById('confirmPayment').textContent = 'PayPal';
+      } else if (order.paymentMethod === 'applepay') {
+        document.getElementById('confirmPayment').textContent = 'Apple Pay';
+      } else if (order.cardLast4) {
         document.getElementById('confirmPayment').textContent = '•••• •••• •••• ' + order.cardLast4;
       }
 
